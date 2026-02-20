@@ -1,0 +1,54 @@
+spring:
+  application:
+    name: akfinance-api
+
+  datasource:
+    url: jdbc:postgresql://localhost:5433/akfinance
+    username: akfinance
+    password: akfinance_dev
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+
+  jackson:
+    default-property-inclusion: non_null
+    serialization:
+      write-dates-as-timestamps: false
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,metrics,prometheus
+  endpoint:
+    health:
+      show-details: when-authorized
+
+app:
+  jwt:
+    secret: akfinance-dev-secret-key-change-in-prod-must-be-at-least-256-bits-long!!
+    expiration-ms: 3600000
+  cors:
+    allowed-origins: http://localhost:5173,http://localhost:3000
+
+logging:
+  level:
+    com.akfinance: DEBUG
+    org.springframework.security: INFO
+  pattern:
+    console: "%d{ISO8601} [%thread] [%X{requestId}] %-5level %logger{36} - %msg%n"

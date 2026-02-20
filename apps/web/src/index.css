@@ -1,0 +1,153 @@
+@import "tailwindcss";
+
+/* ===== AkFinance Design Tokens ===== */
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Light theme colors (default) */
+  --color-bg: #F6F4EF;
+  --color-surface: #FFFFFF;
+  --color-surface-2: #F1EEE6;
+  --color-border: #E7E1D6;
+  --color-text: #141414;
+  --color-text-muted: #5E5A54;
+  --color-gold: #C7A76C;
+  --color-gold-2: #B08E4F;
+  --color-success: #1F7A4D;
+  --color-warning: #B7791F;
+  --color-danger: #B42318;
+
+  /* Spacing scale */
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-6: 24px;
+  --spacing-8: 32px;
+
+  /* Radius */
+  --radius-input: 12px;
+  --radius-card: 16px;
+  --radius-panel: 20px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.10);
+
+  /* Typography */
+  --font-family-primary: 'Manrope', 'Inter', system-ui, sans-serif;
+
+  /* Animation easing */
+  --ease-spring: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Dark theme overrides */
+.dark {
+  --color-bg: #0E0F10;
+  --color-surface: #151618;
+  --color-surface-2: #1B1D20;
+  --color-border: #2A2D31;
+  --color-text: #F2F2F2;
+  --color-text-muted: #B7BCC3;
+  --color-gold: #C7A76C;
+  --color-gold-2: #E0C38C;
+}
+
+/* ===== Base styles ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-family-primary);
+  font-variant-numeric: tabular-nums;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 500;
+  min-height: 100vh;
+}
+
+/* ===== Typography scale ===== */
+.text-h1 {
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 700;
+}
+.text-h2 {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 650;
+}
+.text-h3 {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 650;
+}
+.text-body {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+}
+.text-small {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+}
+.text-caption {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+}
+
+/* ===== Motion ===== */
+.transition-micro {
+  transition-duration: 150ms;
+  transition-timing-function: var(--ease-spring);
+}
+
+.transition-modal {
+  transition-duration: 250ms;
+  transition-timing-function: var(--ease-spring);
+}
+
+.transition-page {
+  transition-duration: 350ms;
+  transition-timing-function: var(--ease-spring);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-border);
+  border-radius: 3px;
+}
+
+/* ===== Focus ring ===== */
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
